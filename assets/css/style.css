@@ -35,7 +35,7 @@ p {
 
 .card {
     background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px; /* change this later*/
+    box-shadow: grey 5px 5px 5px 5px;
     color: black;
     font-size: 20px;
     margin: 0 auto;
