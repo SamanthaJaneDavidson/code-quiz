@@ -1,3 +1,4 @@
+//Countdown timer 
 var timer = document.getElementById("timer");
 
 var secondsLeft = 10;
@@ -15,13 +16,45 @@ function setTime() {
   }, 1000);
 }
 
-
 function gameOver() {
   timer.textContent = "Time is up!";
-//   var gameOverText = document.createElement("img");
-//   imgEl.setAttribute("src", "images/image_1.jpg");
-//   mainEl.appendChild(imgEl);
-
 }
 
 setTime();
+
+//Start quiz 
+
+
+//Questions 
+var quizQuestions = [
+{
+    question: "Placeholder 1",
+    choices: ["a", "b", "c", "d"],
+    answer: 1,
+}, {
+    question2: "Placeholder 2",
+    choices: ["a", "b", "c", "d"],
+    answer: 1
+}, {
+    question3: "Placeholder 3",
+    choices: ["a", "b", "c", "d"],
+    answer: 1
+}, {
+    question4: "Placeholder 4",
+    choices: ["a", "b", "c", "d"],
+    answer: 1
+}, {
+    question5: "Placeholder 5",
+    choices: ["a", "b", "c", "d"],
+    answer: 1
+
+}];
+
+function generateQuestions() {
+    var 
+}
+
+//Question answers 
+function questionAnswers(){}
+
+submitButton.addEventListner('click', questionAnswers); //want to show on wrong answer

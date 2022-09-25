@@ -16,6 +16,11 @@ h1 {
     padding: 20px;
 }
 
+h2 {
+    text-align: center;
+    font-size: 25px;
+}
+
 p {
     text-align: center;
     font-size: 25px;
@@ -33,7 +38,7 @@ p {
     font-size: 30px;
 }
 
-.card {
+.container {
     background-color: white;
     box-shadow: grey 5px 5px 5px 5px;
     color: black;
