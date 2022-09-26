@@ -22,37 +22,35 @@ function gameOver() {
 
 setTime();
 
-//Start quiz 
 
+//Start quiz 
+document.getElementById("start-btn").addEventListener("click", generateQuestions());
 
 //Questions 
+function generateQuestions() {
 var quizQuestions = [
 {
     question: "Placeholder 1",
     choices: ["a", "b", "c", "d"],
-    answer: 1,
+    answer: "a"
 }, {
     question2: "Placeholder 2",
     choices: ["a", "b", "c", "d"],
-    answer: 1
+    answer: "a"
 }, {
     question3: "Placeholder 3",
     choices: ["a", "b", "c", "d"],
-    answer: 1
+    answer: "a"
 }, {
     question4: "Placeholder 4",
     choices: ["a", "b", "c", "d"],
-    answer: 1
+    answer: "a"
 }, {
     question5: "Placeholder 5",
     choices: ["a", "b", "c", "d"],
-    answer: 1
+    answer: "a"
 
-}];
 
-function generateQuestions() {
-    var 
-}
 
 //Question answers 
 function questionAnswers(){}
