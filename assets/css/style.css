@@ -1,6 +1,7 @@
 body {
     background-color: white;
     font-family:sans-serif;
+
 }
 
 nav{
@@ -19,11 +20,11 @@ h1 {
 h2 {
     text-align: center;
     font-size: 25px;
+    padding: 50px;  
 }
 
-p {
-    text-align: center;
-    font-size: 25px;
+.hide {
+    display: none;
 }
 
 #high-scores {
@@ -45,7 +46,7 @@ p {
     font-size: 20px;
     margin: 0 auto;
     max-width: 1000px;
-    padding: 30px 40px;
+    padding: 40px;
 
 }
 
