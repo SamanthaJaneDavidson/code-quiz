@@ -1,4 +1,40 @@
-//Countdown timer 
+console.log("Anthony's questions");
+
+//Quiz questions 
+var quizQuestions = [
+  {
+      question1: "Placeholder 1",
+      choices: ["a", "b", "c", "d"],
+      answer: "a"
+  }, {
+      question2: "Placeholder 2",
+      choices: ["a", "b", "c", "d"],
+      answer: "a"
+  }, {
+      question3: "Placeholder 3",
+      choices: ["a", "b", "c", "d"],
+      answer: "a"
+  }, {
+      question4: "Placeholder 4",
+      choices: ["a", "b", "c", "d"],
+      answer: "a"
+  }, {
+      question5: "Placeholder 5",
+      choices: ["a", "b", "c", "d"],
+      answer: "a"
+  }]
+
+//Access HTML elements
+var startBtn = document.querySelector("#start-btn");
+var quizContent = document.querySelector("#quiz-questions");
+var choices =  document.querySelector("choices");
+
+//Start quiz 
+function startQuiz(){
+  startBtn.addEventListener("click", setTime());
+}
+
+//Countdown timer
 var timer = document.getElementById("timer");
 
 var secondsLeft = 10;
@@ -21,38 +57,3 @@ function gameOver() {
 }
 
 setTime();
-
-
-//Start quiz 
-document.getElementById("start-btn").addEventListener("click", generateQuestions());
-
-//Questions 
-function generateQuestions() {
-var quizQuestions = [
-{
-    question: "Placeholder 1",
-    choices: ["a", "b", "c", "d"],
-    answer: "a"
-}, {
-    question2: "Placeholder 2",
-    choices: ["a", "b", "c", "d"],
-    answer: "a"
-}, {
-    question3: "Placeholder 3",
-    choices: ["a", "b", "c", "d"],
-    answer: "a"
-}, {
-    question4: "Placeholder 4",
-    choices: ["a", "b", "c", "d"],
-    answer: "a"
-}, {
-    question5: "Placeholder 5",
-    choices: ["a", "b", "c", "d"],
-    answer: "a"
-
-
-
-//Question answers 
-function questionAnswers(){}
-
-submitButton.addEventListner('click', questionAnswers); //want to show on wrong answer
