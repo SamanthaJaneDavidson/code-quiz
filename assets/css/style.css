@@ -57,11 +57,13 @@ p {
     font-size: 20px;
     margin: 0 auto;
     max-width: 1000px;
-    padding: 40px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
 
 }
 
-#start {
+#quiz-content {
     justify-content: center;
     padding: 20px;
     text-align: center;
@@ -75,4 +77,12 @@ p {
     font-size: 30px;
     cursor: pointer;
    
+}
+
+#quiz-questions {
+    font-size: 20px;
+}
+
+#answers {
+    font-size: 10px;
 }

@@ -3,13 +3,9 @@ console.log("Anthony's questions");
 var startBtn = document.querySelector("#start-btn");
 var quizContent = document.querySelector("#quiz-content");
 var quizQuestionContainer = document.querySelector("#quiz-questions");
-var choices =  document.querySelector("#choices");
+var quizAnswerContainer = document.querySelector("#quiz-answers");
 var currentQuestion = 0;
-
-// var startBtn = document.getElementById("start-btn");
-// var quizContent = document.getElementById("quiz-content");
-// var quizContent = document.getElementById("quiz-questions");
-// var choices =  document.getElementById("choices");
+var currentAnswer = 0;
 
 
 //Start quiz
@@ -37,20 +33,19 @@ function setTime() {
       clearInterval(timerInterval);
       gameOver();
     }
-
   }, 1000);
 }
 
+
 function getQuestions() {
-  // question1: "Placeholder 1",
-  // choices: [
-  //   {text: "a", correct: false},
-  //   {text: "b", correct: false},
-  //   {text: "c", correct: true},
-  //   {text: "d", correct: false},
-  // ]
   var question = quizQuestions[currentQuestion];
   quizQuestionContainer.textContent = question.question;
+
+}
+
+function getAnswers() {
+  var answer = quizAnswers[currentAnswer]; //I need to do some sort of append child here? 
+  quizAnswerContainer.textContent = answer.answer;
 
 }
 
@@ -67,7 +62,7 @@ var question3 = document.createElement("li");
 var quizQuestions = [
   {
       question: "Placeholder 1",
-      choices: [
+      answer: [
         {text: "a", correct: false},
         {text: "b", correct: false},
         {text: "c", correct: true},
@@ -75,34 +70,34 @@ var quizQuestions = [
       ]
   }, {
       question: "Placeholder 2",
-      choices: [
+      answer: [
         {text: "a", correct: true},
         {text: "b", correct: false},
-        {text: "c", correct: true},
+        {text: "c", correct: false},
         {text: "d", correct: false},
       ]
   }, {
       question: "Placeholder 3",
-      choices: [
-        {text: "a", correct: true},
+      answer: [
+        {text: "a", correct: false},
         {text: "b", correct: false},
-        {text: "c", correct: true},
-        {text: "d", correct: false},
+        {text: "c", correct: false},
+        {text: "d", correct: true},
       ]
   }, {
       question: "Placeholder 4",
-      choices: [
-        {text: "a", correct: true},
+      answer: [
+        {text: "a", correct: false},
         {text: "b", correct: false},
         {text: "c", correct: true},
         {text: "d", correct: false},
       ]
   }, {
       question: "Placeholder 5",
-      choices: [
+      answer: [
         {text: "a", correct: true},
         {text: "b", correct: false},
-        {text: "c", correct: true},
+        {text: "c", correct: false},
         {text: "d", correct: false},
       ]
   }]
