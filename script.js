@@ -1,6 +1,7 @@
 console.log("Anthony's questions");
 //Access HTML elements
 var startBtn = document.querySelector("#start-btn");
+var nextBtn = document.querySelector("#next-btn");
 var quizContent = document.querySelector("#quiz-content");
 var quizQuestionContainer = document.querySelector("#quiz-questions");
 var quizAnswerContainer = document.querySelector("#quiz-answers");
@@ -40,23 +41,29 @@ function setTime() {
 function getQuestions() {
   var question = quizQuestions[currentQuestion];
   quizQuestionContainer.textContent = question.question;
+  question.answer.forEach(answer => {
+    var answer = document.createElement("li");
+    li.innerText = answer.text;
+    quizAnswerContainer.appendChild(li)
+
+  })
 
 }
 
-function getAnswers() {
-  var answer = quizAnswers[currentAnswer]; //I need to do some sort of append child here? 
-  quizAnswerContainer.textContent = answer.answer;
+// function getAnswers() {
+//   var answer = quizAnswers[currentAnswer]; //I need to do some sort of append child here? 
+//   quizAnswerContainer.textContent = answer.answer;
 
-}
+// }
 
 //Question elements
-var questionListEl = document.createElement("ol");
+// var questionListEl = document.createElement("ol");
 
 //Question list items
-var question1 = document.createElement("li");
-var question2 = document.createElement("li");
-var question3 = document.createElement("li");
-var question3 = document.createElement("li");
+// var question1 = document.createElement("li");
+// var question2 = document.createElement("li");
+// var question3 = document.createElement("li");
+// var question3 = document.createElement("li");
 
 //Quiz questions
 var quizQuestions = [
