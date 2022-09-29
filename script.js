@@ -1,4 +1,3 @@
-console.log("Anthony's questions");
 //Access HTML elements
 var startBtn = document.querySelector("#start-btn");
 var quizContent = document.querySelector("#quiz-content");
@@ -35,56 +34,22 @@ function setTime() {
   }, 1000);
 }
 
-//Pull in current question 
+//Get current question 
 function getQuestions() {
   var question = quizQuestions[currentQuestion];
   quizQuestionContainer.textContent = question.question;
-
+  var quizAnswerList = document.createElement("ol");
+   for(i = 0; i < 4; i++) {
+    var answer = document.createElement("li");
+    answer.textContent = quizQuestions[0].answer[i].text;
+    quizAnswerList.appendChild(answer);
+   }
+ 
+  quizAnswerContainer.appendChild(quizAnswerList);
+  quizAnswerContainer.setAttribute("style", "font-size: 20px");
+  
   }
-
-  // function selectAnswer(){
-    
-  // }
-
-// //Answer elements 
-
-var quizAnswerList = doucment.createElement("ol");
-
-var answerA = document.createElement("li");
-var answerB = document.createElement("li");
-var answerC = document.createElement("li");
-var answerD = document.createElement("li");
-
-//var answerText = [answerA, answerB, answerC, answerD];
-
-quizAnswerContainer.appendChild(quizAnswerList);
-quizAnswerList.appendChild([answerA, answerB, answerC, answerD])
-
-
-quizAnswerContainer.setAttribute("style", "font-size: 20px");
-
-
-// //Append answers 
-// quizAnswerContainer.appendChild(answerA);
-// quizAnswerContainer.appendChild(answerB);
-// quizAnswerContainer.appendChild(answerC);
-// quizAnswerContainer.appendChild(answerD);
-
-// body.appendChild(quizAnswerContainer);
-
-// quizAnswerContainer.appendchild(answerText);
-
-// //Pull in current answers 
-// function getAnswers(){
-//   quizAnswerContainer.textContent = question.answer.text;
-// }
-
-// var quizAnswersEl = document.createElement("ol");
-// for(var i = 0; i < quizAnswersEl.length; i++) {
-//   quizAnswersEl[i].setAttribute ("style", "font-size: 20px;");
-// }
-
-
+  
 //Quiz questions
 var quizQuestions = [
   {
