@@ -50,7 +50,7 @@ p {
     font-size: 30px;
 }
 
-/* #container {
+#container {
     background-color: white;
     box-shadow: grey 5px 5px 5px 5px;
     color: black;
@@ -68,7 +68,7 @@ p {
     padding: 20px;
     text-align: center;
     margin-top: 30px;
-} */
+}
 
 #start-btn {
     background-color: purple;
