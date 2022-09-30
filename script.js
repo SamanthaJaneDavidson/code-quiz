@@ -47,7 +47,7 @@ var quizQuestions = [
 var quizQuestionContainer = document.querySelector("#quiz-questions");
 var quizAnswerContainer = document.querySelector("#quiz-answers");
 var currentQuestion = 0;
-var currentAnswer = 0;
+var ans = 0;
 
 
 //Start quiz
@@ -80,31 +80,58 @@ function setTime() {
 
 //Get current question 
 function getQuestions() {
+  quizQuestionContainer.innerHTML = '';
+  quizAnswerContainer.innerHTML = '';
   var question = quizQuestions[currentQuestion];
   quizQuestionContainer.textContent = question.question;
+
   var quizAnswerList = document.createElement("ol");
   quizAnswerList.setAttribute("style", "display: flex; justify-content: space-evenly;")
+
    for(i = 0; i < 4; i++) {
     var answer = document.createElement("button");
-    answer.setAttribute("style", "font-size: 20px; margin: 10px; background-color: purple; color: white;")
+    answer.setAttribute("style", "font-size: 20px; margin: 10px; background-color: purple; color: white; cursor: pointer;")
     answer.textContent = quizQuestions[0].answer[i].text;
     quizAnswerList.appendChild(answer);
- 
    }
- 
     quizAnswerContainer.appendChild(quizAnswerList);
     quizAnswerList.setAttribute("class", "li")
-  
+
   }
 
+    quizAnswerContainer.addEventListener("click", function(event){
+      
+      var child = event.target;
+    
+      if(child.matches("#start-brn")){
+        getQuestions()
+      }
+      if(child.matches("button")){
+        if(child.dataset.next < quizQuestions.length){
+          currentQuestion = parseInt(child.dataset.next);
+          if(child.dataset.value === true){
+            ans++
+          }
+          getQuestions();
+        }
+        else{
+          if(child.dataset.value === true){
+            ans++
+          }
 
-
+          quizQuestionContainer.innerHTML = '';
+          quizAnswerContainer.innerHTML = '';
+        }
+      }
+    })
+   
   //Game over timer
   function gameOver() {
     timer.textContent = "Time is up!";
     //present score somehow
   }
 
+
   //high score page 
 
-  //local storage 
+  //local storage
