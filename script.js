@@ -1,9 +1,53 @@
+//Quiz questions
+var quizQuestions = [
+  {
+      question: "Some question here about something that's probably important that I don't know the answer to? ",
+      answer: [
+        {text: "Something something something", correct: false},
+        {text: "Something something something", correct: false},
+        {text: "Important answer that I don't understand", correct: true},
+        {text: "Something something something", correct: false},
+      ]
+  }, {
+      question: "Placeholder 2",
+      answer: [
+        {text: "a", correct: true},
+        {text: "b", correct: false},
+        {text: "c", correct: false},
+        {text: "d", correct: false},
+      ]
+  }, {
+      question: "Placeholder 3",
+      answer: [
+        {text: "a", correct: false},
+        {text: "b", correct: false},
+        {text: "c", correct: false},
+        {text: "d", correct: true},
+      ]
+  }, {
+      question: "Placeholder 4",
+      answer: [
+        {text: "a", correct: false},
+        {text: "b", correct: false},
+        {text: "c", correct: true},
+        {text: "d", correct: false},
+      ]
+  }, {
+      question: "Placeholder 5",
+      answer: [
+        {text: "a", correct: true},
+        {text: "b", correct: false},
+        {text: "c", correct: false},
+        {text: "d", correct: false},
+      ]
+  }]
+
 //Access HTML elements
-var startBtn = document.querySelector("#start-btn");
-var quizContent = document.querySelector("#quiz-content");
+// var startBtn = document.querySelector("#start-btn");
 var quizQuestionContainer = document.querySelector("#quiz-questions");
 var quizAnswerContainer = document.querySelector("#quiz-answers");
 var currentQuestion = 0;
+var currentAnswer = 0;
 
 
 //Start quiz
@@ -39,61 +83,21 @@ function getQuestions() {
   var question = quizQuestions[currentQuestion];
   quizQuestionContainer.textContent = question.question;
   var quizAnswerList = document.createElement("ol");
+  quizAnswerList.setAttribute("style", "display: flex; justify-content: space-evenly;")
    for(i = 0; i < 4; i++) {
-    var answer = document.createElement("li");
+    var answer = document.createElement("button");
+    answer.setAttribute("style", "font-size: 20px; margin: 10px; background-color: purple; color: white;")
     answer.textContent = quizQuestions[0].answer[i].text;
     quizAnswerList.appendChild(answer);
+ 
    }
  
-  quizAnswerContainer.appendChild(quizAnswerList);
-  // quizAnswerContainer.setAttribute("style", "font-size: 25px;" "background-color: white" );
-    answer.setAttribute("class", "btn");
+    quizAnswerContainer.appendChild(quizAnswerList);
+    quizAnswerList.setAttribute("class", "li")
   
   }
 
-//Quiz questions
-var quizQuestions = [
-  {
-      question: "Placeholder 1",
-      answer: [
-        {text: "a", correct: false},
-        {text: "b", correct: false},
-        {text: "c", correct: true},
-        {text: "d", correct: false},
-      ]
-  }, {
-      question: "Placeholder 2",
-      answer: [
-        {text: "a", correct: true},
-        {text: "b", correct: false},
-        {text: "c", correct: false},
-        {text: "d", correct: false},
-      ]
-  }, {
-      question: "Placeholder 3",
-      answer: [
-        {text: "a", correct: false},
-        {text: "b", correct: false},
-        {text: "c", correct: false},
-        {text: "d", correct: true},
-      ]
-  }, {
-      question: "Placeholder 4",
-      answer: [
-        {text: "a", correct: false},
-        {text: "b", correct: false},
-        {text: "c", correct: true},
-        {text: "d", correct: false},
-      ]
-  }, {
-      question: "Placeholder 5",
-      answer: [
-        {text: "a", correct: true},
-        {text: "b", correct: false},
-        {text: "c", correct: false},
-        {text: "d", correct: false},
-      ]
-  }]
+
 
   //Game over timer
   function gameOver() {

@@ -27,7 +27,6 @@ var quizQuestions = [
     }];
 
 //Access HTML elements
-var startBtn = document.querySelector("#start-btn");
 var quizQuestionContainer = document.querySelector("#quiz-questions");
 var quizAnswerContainer = document.querySelector("#quiz-answers");
 var currentQuestion = 0;
@@ -38,14 +37,15 @@ var currentAnswer = 0;
 // startBtn.addEventListener("click", startQuiz);
 
 function startQuiz(){
+    // startBtn.setAttribute("style", "display: none;");
+    var item = document.createElement("li");
+    var btn = document.createElement("button");
+    btn.textContent = "Start";
+    btn.setAttribute("id", "start-button");
+    quizAnswerContainer.appendChild(item);
+    item.appendChild(btn);
     setTime();
-    startBtn.setAttribute("style", "display: none;");
-    var answerList = document.createElement("li");
-    var answerBtns = document.createElement("button");
-    quizAnswerContainer.appendChild(answerList);
-    answerList.appendChild(answerBtns)
  
-
    }
   
   //Countdown timer
@@ -72,7 +72,7 @@ function getQuestions() {
     
     quizAnswerContainer.innerHTML = '';
 
-    for(var i = 0; i < 4; i++){
+    for(var i = 0; i < question.answer.length; i++){
         console.log(question.answer[i]);
 
         var answerList = document.createElement("li");
@@ -85,6 +85,9 @@ function getQuestions() {
 
         if(question.answer[i] === answer.correct)
             button.dataset.value = "correct";
+            else {
+                button.dataset.value = "incorrect";
+            }
 
         quizAnswerContainer.appendChild(answerList);
         answerList.appendChild(answerBtns)
@@ -95,12 +98,13 @@ function getQuestions() {
 startQuiz();
 
 quizAnswerContainer.addEventListener("click", function(event) {
-    console.log(currentAnswer);
 
-    var child = even.target;
-    console.log(child);
+    var child = event.target;
 
-    if(child.matches("#start-btn")){
+    if(child.matches("#start-btn"))
+        getQuestions()
+
+    if(child.matches("#answer-btn")){
         if(child.dataset.next < quesiton.length){
             currentQuestion = parseInt(child.dataset.next);
             if(child.dataset.value === "correct:"){

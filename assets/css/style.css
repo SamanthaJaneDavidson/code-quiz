@@ -94,4 +94,10 @@ p {
 
 #quiz-questions {
     font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#button {
+    display: flex;
+    flex-direction: column;
 }
