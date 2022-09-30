@@ -60,6 +60,7 @@ p {
     padding: 20px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 
 }
 
@@ -77,6 +78,18 @@ p {
     font-size: 30px;
     cursor: pointer;
    
+}
+
+.btn {
+    background-color: purple;
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    cursor: pointer;
+    border: solid, black;
+    padding: 10px;
+    width: 50%;
 }
 
 #quiz-questions {

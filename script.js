@@ -46,10 +46,11 @@ function getQuestions() {
    }
  
   quizAnswerContainer.appendChild(quizAnswerList);
-  quizAnswerContainer.setAttribute("style", "font-size: 20px");
+  // quizAnswerContainer.setAttribute("style", "font-size: 25px;" "background-color: white" );
+    answer.setAttribute("class", "btn");
   
   }
-  
+
 //Quiz questions
 var quizQuestions = [
   {
@@ -101,3 +102,5 @@ var quizQuestions = [
   }
 
   //high score page 
+
+  //local storage 
