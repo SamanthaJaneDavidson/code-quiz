@@ -43,7 +43,7 @@ function startQuiz(){
 //Countdown timer
 var timer = document.getElementById("timer");
 
-var secondsLeft = 10;
+var secondsLeft = 60;
 
 function setTime() {
   var timerInterval = setInterval(function() {
@@ -69,6 +69,12 @@ function getQuestions() {
 
    for(i = 0; i < question.answer.length; i++) {
     var answer = document.createElement("button");
+    if(question.answer[i] == quizQuestions[currentQuestion].correct){
+      answer.value = "correct"
+    }
+    else{
+      answer.value = "incorrect"
+    }
     answer.setAttribute("style", "font-size: 20px; margin: 10px; background-color: purple; color: white; cursor: pointer;")
     answer.textContent = quizQuestions[currentQuestion].answer[i];
     quizAnswerList.appendChild(answer);
@@ -83,50 +89,63 @@ function getQuestions() {
       var child = event.target;
     
       if(child.matches("button")){
-        if(child.dataset.next < quizQuestions.length){
-          if(child.dataset.value != "correct"){
-            //need to take 10 seconds off timer 
+        console.log(child.value)
+        if(currentQuestion < quizQuestions.length){
+          if(child.value == "incorrect"){
+            secondsLeft-=10;
             alert("Incorrect!");
+            quizQuestionContainer.innerHTML = '';
+            quizAnswerContainer.innerHTML = '';
+            getQuestions();
           }
-          quizQuestionContainer.innerHTML = '';
-          quizAnswerContainer.innerHTML = '';
-          getQuestions();
+          else{
+            if(child.value === "correct"){
+              alert("Correct!")
+            }
+            quizQuestionContainer.innerHTML = '';
+            quizAnswerContainer.innerHTML = '';
+            getQuestions()
+          }
         }
         else{
-          if(child.dataset.value === "correct"){
-            alert("Correct!")
+          if(child.value == "incorrect"){
+            alert("Incorrect!");
+            secondsLeft-=10;
           }
-          quizQuestionContainer.innerHTML = '';
-          quizAnswerContainer.innerHTML = '';
-          getQuestions()
+            if(child.value === "correct"){
+              alert("Correct!")
+            }
+            var quizSection = document.getElementById("quiz-section")
+            quizSection.classList.add("hidden")
+            var scoreForm = document.getElementById("score-form")
+            scoreForm.classList.remove("hidden")
         }
       }
     })
-
-      //???? is this something I should do instead of what is above? 
-    // function getNextQuestion(){
-    //   for(i = 0; i < currentQuestion.length; i++)
-    //   getQuestions()
-    // }
-
-    //local storage
-    // var count = localStorage.getItem("count");
-
-    // counter.textContent = count;
-
-    // quizAnswerContainer.addEventListener("click", function() {
-    //   if(correct = false) {
-    //   count--;
-    //   localStorage.setItem("count",count);
-    //   }
-    // })
 
    
   //Game over timer
   function gameOver() {
     timer.textContent = "Time is up!";
+    var quizSection = document.getElementById("quiz-section")
+    quizSection.classList.add("hidden")
+    var scoreForm = document.getElementById("score-form")
+    scoreForm.classList.remove("hidden")
     //present score somehow
   }
 
+  
+var scores = JSON.parse(localStorage.getItem("scores")) || [];
 
+function saveScore(){
+  var initials = document.getElementById("initials");
+  var data = {
+    initials: initials.value,
+    score: secondsLeft,
+  }
+  scores.push(data)
+  localStorage.setItem("scores", JSON.stringify(scores))
+}
 
+var pool = document.getElementById("save-button")
+pool.addEventListener("click", saveScore)
