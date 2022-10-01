@@ -29,7 +29,6 @@ var currentQuestion = 0;
 var ans = 0;
 
 
-
 //Start quiz
 var startBtn = document.getElementById("start-btn");
 startBtn.addEventListener("click", startQuiz);
@@ -38,8 +37,8 @@ function startQuiz(){
   setTime();
   startBtn.setAttribute("style", "display: none;");
   getQuestions()
-
  }
+
 
 //Countdown timer
 var timer = document.getElementById("timer");
@@ -60,57 +59,55 @@ function setTime() {
 
 //Get current question 
 function getQuestions() {
-  // quizQuestionContainer.innerHTML = '';
-  // quizAnswerContainer.innerHTML = '';
   var question = quizQuestions[currentQuestion];
   quizQuestionContainer.textContent = question.question;
 
   var quizAnswerList = document.createElement("ol");
   quizAnswerList.setAttribute("style", "display: flex; justify-content: space-evenly;")
+  quizAnswerContainer.appendChild(quizAnswerList);
+  quizAnswerList.setAttribute("class", "li")
 
-   for(i = 0; i < 4; i++) {
+   for(i = 0; i < question.answer.length; i++) {
     var answer = document.createElement("button");
     answer.setAttribute("style", "font-size: 20px; margin: 10px; background-color: purple; color: white; cursor: pointer;")
-    answer.textContent = quizQuestions[0].answer[i];
+    answer.textContent = quizQuestions[currentQuestion].answer[i];
     quizAnswerList.appendChild(answer);
    }
-   
-    quizAnswerContainer.appendChild(quizAnswerList);
-    quizAnswerList.setAttribute("class", "li")
-
-
   }
 
-    //question cycle 
+    //question cycle and point add? (from Anthony's code)
     quizAnswerContainer.addEventListener("click", function(event){
       
+      currentQuestion++
+
       var child = event.target;
     
       if(child.matches("button")){
         if(child.dataset.next < quizQuestions.length){
-          currentQuestion = parseInt(child.dataset.next);
-          if(child.dataset.value === false){
-            //need to subtract from timer - how? 
+          if(child.dataset.value != "correct"){
+            //need to take 10 seconds off timer 
+            alert("Incorrect!");
           }
+          quizQuestionContainer.innerHTML = '';
+          quizAnswerContainer.innerHTML = '';
           getQuestions();
         }
         else{
-          if(child.dataset.value === true){
-            ans++
+          if(child.dataset.value === "correct"){
+            alert("Correct!")
           }
-       
-        quizQuestionContainer.innerHTML = '';
-        quizAnswerContainer.innerHTML = '';
-
+          quizQuestionContainer.innerHTML = '';
+          quizAnswerContainer.innerHTML = '';
+          getQuestions()
         }
       }
     })
 
-      //????
-    function getNextQuestion(){
-      for(i = 0; i < currentQuestion.length; i++)
-      getQuestions()
-    }
+      //???? is this something I should do instead of what is above? 
+    // function getNextQuestion(){
+    //   for(i = 0; i < currentQuestion.length; i++)
+    //   getQuestions()
+    // }
 
     //local storage
     // var count = localStorage.getItem("count");
@@ -124,8 +121,6 @@ function getQuestions() {
     //   }
     // })
 
-
-
    
   //Game over timer
   function gameOver() {
@@ -134,5 +129,4 @@ function getQuestions() {
   }
 
 
-  //high score page 
 
