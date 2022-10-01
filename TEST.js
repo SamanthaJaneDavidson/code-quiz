@@ -51,11 +51,8 @@ function getQuestions() {
 
   heading.textContent = question.question; 
 
-  question.innerHTML = '';
+  //question.innerHTML = '';
 
-  // var quizAnswerList = document.createElement("ol");
-  // quizAnswerList.setAttribute("style", "display: flex; justify-content: space-evenly;")
-  // quizAnswerList.append(question);
 
   menu.innerHTML = '';
 
@@ -65,7 +62,7 @@ function getQuestions() {
     var item = document.createElement("li");
     var button = document.createElement("button");
 
-    button.setAttribute("class", "answer-button");
+    button.setAttribute("class", "choice-button");
     button.textContent = question.answer[i];
     button.dataset.index = currentQuestion;
     button.dataset.next = currentQuestion + 1;
@@ -93,7 +90,7 @@ function getQuestions() {
       if(child.matches("#start-button")){
         getQuestions();
       }
-      if(child.matches(".answer-button")){
+      if(child.matches(".choice-button")){
         if(child.dataset.next < quizQuestions.length){
         currentQuestion =parseInt(child.dataset.next);
         if(child.dataset.value === "correct" ){

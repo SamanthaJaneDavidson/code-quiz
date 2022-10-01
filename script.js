@@ -5,37 +5,21 @@ var quizQuestions = [
       answer: ["Strings", "Booleans", "Alerts", "Numbers"],
       correct: "Alerts"
   }, {
-      question: "Placeholder 2",
-      answer: [
-        {text: "a", correct: true},
-        {text: "b", correct: false},
-        {text: "c", correct: false},
-        {text: "d", correct: false},
-      ]
+      question: "Blah blah blah blah blah blah? ",
+      answer: ["stuff", "different stuff", "more stuff", "this sucks"],
+      correct: "this sucks"
   }, {
-      question: "Placeholder 3",
-      answer: [
-        {text: "a", correct: false},
-        {text: "b", correct: false},
-        {text: "c", correct: false},
-        {text: "d", correct: true},
-      ]
+      question: "How well does Sam know JavaScript?",
+      answer: ["not at all", "maybe a little", "getting there", "totally got this"],
+      correct: "maybe a little"
   }, {
-      question: "Placeholder 4",
-      answer: [
-        {text: "a", correct: false},
-        {text: "b", correct: false},
-        {text: "c", correct: true},
-        {text: "d", correct: false},
-      ]
+      question: "How much more time should I spend on this before I see my tutor?",
+      answer: ["give up", "2 more hours", "4 more hours", "the rest of your life"],
+      correct: "4 more hours"
   }, {
-      question: "Placeholder 5",
-      answer: [
-        {text: "a", correct: true},
-        {text: "b", correct: false},
-        {text: "c", correct: false},
-        {text: "d", correct: false},
-      ]
+      question: "Is 1 week enough to actually be able to do this assignment?",
+      answer: ["definitely not", "with some help maybe", "if there were more hours in the day", "definitely"],
+      correct: "with some help maybe"
   }]
 
 //Access HTML elements
@@ -97,7 +81,7 @@ function getQuestions() {
 
   }
 
-    //Answer values? 
+    //question cycle 
     quizAnswerContainer.addEventListener("click", function(event){
       
       var child = event.target;
@@ -122,6 +106,7 @@ function getQuestions() {
       }
     })
 
+      //????
     function getNextQuestion(){
       for(i = 0; i < currentQuestion.length; i++)
       getQuestions()
