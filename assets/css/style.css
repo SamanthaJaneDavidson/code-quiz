@@ -103,3 +103,16 @@ p {
 .hidden {
     display: none;
 }
+
+#score-form {
+    background-color: white;
+    box-shadow: grey 5px 5px 5px 5px;
+    color: black;
+    font-size: 20px;
+    margin: 0 auto;
+    max-width: 1000px;
+    padding: 20px;
+    align-content: center;
+}
+
+/*need to add media screen stuff 

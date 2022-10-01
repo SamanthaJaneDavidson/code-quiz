@@ -81,7 +81,7 @@ function getQuestions() {
    }
   }
 
-    //question cycle and point add? (from Anthony's code)
+    //Question cycle and answer scoring 
     quizAnswerContainer.addEventListener("click", function(event){
       
       currentQuestion++
@@ -119,9 +119,12 @@ function getQuestions() {
             quizSection.classList.add("hidden")
             var scoreForm = document.getElementById("score-form")
             scoreForm.classList.remove("hidden")
+          }  
         }
       }
-    })
+    )
+
+
 
    
   //Game over timer
@@ -131,10 +134,10 @@ function getQuestions() {
     quizSection.classList.add("hidden")
     var scoreForm = document.getElementById("score-form")
     scoreForm.classList.remove("hidden")
-    //present score somehow
+
   }
 
-  
+//Score calculations and display   
 var scores = JSON.parse(localStorage.getItem("scores")) || [];
 
 function saveScore(){
@@ -149,3 +152,14 @@ function saveScore(){
 
 var pool = document.getElementById("save-button")
 pool.addEventListener("click", saveScore)
+
+//Display score
+// function displayScore(){
+// var endScore = JSON.parse(localStorage.getItem(scores));
+
+// endScore = document.createElement
+// document.getElementById("")
+// }
+
+//High score page
+
