@@ -34,9 +34,7 @@ p {
 
 }
 
-.hide {
-    display: none;
-}
+
 
 #high-scores {
     float: left;
@@ -71,7 +69,7 @@ p {
     margin-top: 30px;
 }
 
-#start-btn {
+/* #start-button {
     background-color: purple;
     color: white;
     justify-content: center;
@@ -90,14 +88,14 @@ p {
     border: solid, black;
     padding: 10px;
     width: 50%;
-}
+} */
 
 #quiz-questions {
     font-size: 20px;
     margin-bottom: 10px;
 }
 
-#button {
+/* #button {
     display: flex;
     flex-direction: column;
-}
+} */

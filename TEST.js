@@ -1,155 +1,121 @@
 //Quiz questions
 var quizQuestions = [
-    {
-        question: "Commonly used data types do not include? ",
-        answer: [
-          {text: "Strings", correct: false},
-          {text: "Booleans", correct: false},
-          {text: "Alerts", correct: true},
-          {text: "Numbers", correct: false},
-        ]
-    }, {
-        question: "Placeholder 2",
-        answer: [
-          {text: "a", correct: true},
-          {text: "b", correct: false},
-          {text: "c", correct: false},
-          {text: "d", correct: false},
-        ]
-    }, {
-        question: "Placeholder 3",
-        answer: [
-          {text: "a", correct: false},
-          {text: "b", correct: false},
-          {text: "c", correct: false},
-          {text: "d", correct: true},
-        ]
-    }, {
-        question: "Placeholder 4",
-        answer: [
-          {text: "a", correct: false},
-          {text: "b", correct: false},
-          {text: "c", correct: true},
-          {text: "d", correct: false},
-        ]
-    }, {
-        question: "Placeholder 5",
-        answer: [
-          {text: "a", correct: true},
-          {text: "b", correct: false},
-          {text: "c", correct: false},
-          {text: "d", correct: false},
-        ]
-    }]
-  
-  //Access HTML elements
-  // var startBtn = document.querySelector("#start-btn");
-  //var quizQuestionContainer = document.querySelector("#quiz-questions");
-  var quizAnswerContainer = document.querySelector("#quiz-answers");
-  var currentQuestion = 0;
-  var ans = 0;
-  var questionElement = document.querySelector("quiz-questions");
-  
-  
-  //Start quiz
-  var startBtn = document.getElementById("start-btn");
-  startBtn.addEventListener("click", startQuiz);
-  
-  function startQuiz(){
-    setTime();
-    startBtn.setAttribute("style", "display: none;");
-    getQuestions()
-  
-   }
-  
-  //Countdown timer
-  var timer = document.getElementById("timer");
-  
-  var secondsLeft = 10;
-  
-  function setTime() {
-    var timerInterval = setInterval(function() {
-      secondsLeft--;
-      timer.textContent = secondsLeft;
-  
-      if(secondsLeft === 0) {
-        clearInterval(timerInterval);
-        gameOver();
-      }
-    }, 1000);
+  {
+      question: "Commonly used data types do not include? ",
+      answer: ["Strings", "Booleans", "Alerts", "Numbers"],
+      correct: "Alerts"
+  }, {
+      question: "Placeholder 2",
+      answer: ["a", "b", "c", "d"],
+      correct: "a"
+  }, {
+      question: "Placeholder 3",
+      answer: ["a", "b", "c", "d"],
+      correct: "b"
+  }, {
+      question: "Placeholder 4",
+      answer: ["a", "b", "c", "d"],
+      correct: "c"
+  }, {
+      question: "Placeholder 5",
+      answer: ["a", "b", "c", "d"],
+      correct: "d"
+  }]
+
+//Access HTML elements
+var heading = document.querySelector("#heading");
+var menu = document.querySelector("#menu")
+var currentQuestion = 0;
+var ans = 0;
+
+//Starting screen 
+function startScreen(){
+ 
+  var item = document.createElement("li");
+  var btn = document.createElement("button");
+
+  btn.textContent = "start";
+  btn.setAttribute("id", "start-button");
+
+  menu.appendChild(item);
+  item.appendChild(btn);
+
+  heading.textContent = "blah blah"
+}
+
+
+//Get current question 
+function getQuestions() {
+
+  var question = quizQuestions[currentQuestion];
+
+  heading.textContent = question.question; 
+
+  question.innerHTML = '';
+
+  // var quizAnswerList = document.createElement("ol");
+  // quizAnswerList.setAttribute("style", "display: flex; justify-content: space-evenly;")
+  // quizAnswerList.append(question);
+
+  menu.innerHTML = '';
+
+  for(i = 0; i < question.answer.length; i++){
+  console.log(question.answer[i]);
+
+    var item = document.createElement("li");
+    var button = document.createElement("button");
+
+    button.setAttribute("class", "answer-button");
+    button.textContent = question.answer[i];
+    button.dataset.index = currentQuestion;
+    button.dataset.next = currentQuestion + 1;
+
+    if(question.answer[i] === question.correct){
+      button.datatset.value = "correct";
+    }
+    else{
+      button.dataset.value = "incorrect";
+    }
+
+    menu.appendChild(item);
+    item.appendChild(button);
+    }
   }
-  
-  //Get current question 
-  function getQuestions(question) {
-      questionElement.innerText = question.question;
-      question.answer.array.forEach(answer => {
-        var button = document.createElement("button");
-        button.innerText = answer.text
-        button.classList.add("btn")
-        if (answer.correct) {
-          button.dataset.correct = answer.correct
-        }
-        button.addEventListener("click", selectAnswer)
-      });
-  
-    }
 
-    function selectAnswer(){
+    startScreen();
 
-    }
-  
-      // //Answer values? 
-      // quizAnswerContainer.addEventListener("click", function(event){
-        
-      //   var child = event.target;
+    menu.addEventListener("click", function(event){
+      console.log(ans);
       
-      //   if(child.matches("button")){
-      //     if(child.dataset.next < quizQuestions.length){
-      //       currentQuestion = parseInt(child.dataset.next);
-      //       if(child.dataset.value === false){
-      //         //need to subtract from timer - how? 
-      //       }
-      //       getQuestions();
-      //     }
-      //     else{
-      //       if(child.dataset.value === true){
-      //         ans++
-      //       }
-         
-      //     quizQuestionContainer.innerHTML = '';
-      //     quizAnswerContainer.innerHTML = '';
+      var child = event.target;
+      console.log(child);
+    
+      if(child.matches("#start-button")){
+        getQuestions();
+      }
+      if(child.matches(".answer-button")){
+        if(child.dataset.next < quizQuestions.length){
+        currentQuestion =parseInt(child.dataset.next);
+        if(child.dataset.value === "correct" ){
+          ans++
+        }
+        getQuestions();
+       }
+       else{
+        if(child.dataset.value === "correct" ){
+          ans++
+       }
+
+          heading.textContent = "yay " + ans + "score";
+           //save to local storage
+          quizQuestionContainer.innerHTML = '';
+          menu.innerHTML = '';
   
-      //     }
-      //   }
-      // })
+       
+          }
+        }
+      }
+    )
+
   
-      // function getNextQuestion(){
-      //   for(i = 0; i < currentQuestion.length; i++)
-      //   getQuestions()
-      // }
-  
-      //local storage
-      // var count = localStorage.getItem("count");
-  
-      // counter.textContent = count;
-  
-      // quizAnswerContainer.addEventListener("click", function() {
-      //   if(correct = false) {
-      //   count--;
-      //   localStorage.setItem("count",count);
-      //   }
-      // })
-  
-  
-  
-     
-    //Game over timer
-    function gameOver() {
-      timer.textContent = "Time is up!";
-      //present score somehow
-    }
-  
-  
-    //high score page 
-  
-  
+
