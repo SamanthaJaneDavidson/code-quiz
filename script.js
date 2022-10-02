@@ -119,10 +119,8 @@ function getQuestions() {
             quizSection.classList.add("hidden")
             var scoreForm = document.getElementById("score-form")
             scoreForm.classList.remove("hidden")
-          }  
-        }
-      }
-    )
+
+          }}})
 
 
 
@@ -137,7 +135,7 @@ function getQuestions() {
 
   }
 
-//Score calculations and display   
+//Score calculation
 var scores = JSON.parse(localStorage.getItem("scores")) || [];
 
 function saveScore(){
@@ -149,6 +147,12 @@ function saveScore(){
   scores.push(data)
   localStorage.setItem("scores", JSON.stringify(scores))
 }
+
+//Display score
+
+var endScore = getElementById("saved-score");
+endScore.setAttribute("style", "font-size: 25px; color: purple;")
+endScore.appendChild("saved-score")
 
 var pool = document.getElementById("save-button")
 pool.addEventListener("click", saveScore)
