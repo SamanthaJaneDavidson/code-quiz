@@ -65,7 +65,7 @@ function getQuestions() {
   quizQuestionContainer.textContent = question.question;
 
   var quizAnswerList = document.createElement("ol");
-  quizAnswerList.setAttribute("style", "display: flex; justify-content: space-evenly;")
+  quizAnswerList.setAttribute("style", "display: flex; flex-direction: column;")
   quizAnswerContainer.appendChild(quizAnswerList);
   quizAnswerList.setAttribute("class", "li")
 
@@ -95,9 +95,7 @@ function getQuestions() {
         if(currentQuestion < quizQuestions.length){
           if(child.value == "incorrect"){
             secondsLeft-=10;
-
-            result.innerHTML = "Incorrect!";
-
+            result.innerHTML = "Incorrect!"; //Where do I need to put this so it displays on the current question instead of the next? 
             quizQuestionContainer.innerHTML = '';
             quizAnswerContainer.innerHTML = '';
             getQuestions();
