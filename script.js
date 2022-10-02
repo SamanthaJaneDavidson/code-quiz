@@ -27,6 +27,8 @@ var quizQuestionContainer = document.querySelector("#quiz-questions");
 var quizAnswerContainer = document.querySelector("#quiz-answers");
 var currentQuestion = 0;
 var ans = 0;
+var endScore = document.querySelector("#end-score");
+var result = document.querySelector("#result")
 
 
 //Start quiz
@@ -93,14 +95,16 @@ function getQuestions() {
         if(currentQuestion < quizQuestions.length){
           if(child.value == "incorrect"){
             secondsLeft-=10;
-            alert("Incorrect!");
+
+            result.innerHTML = "Incorrect!";
+
             quizQuestionContainer.innerHTML = '';
             quizAnswerContainer.innerHTML = '';
             getQuestions();
           }
           else{
             if(child.value === "correct"){
-              alert("Correct!")
+              // alert("Correct!")
             }
             quizQuestionContainer.innerHTML = '';
             quizAnswerContainer.innerHTML = '';
@@ -109,11 +113,11 @@ function getQuestions() {
         }
         else{
           if(child.value == "incorrect"){
-            alert("Incorrect!");
+            // alert("Incorrect!");
             secondsLeft-=10;
           }
             if(child.value === "correct"){
-              alert("Correct!")
+              // alert("Correct!")
             }
             var quizSection = document.getElementById("quiz-section")
             quizSection.classList.add("hidden")
@@ -148,22 +152,15 @@ function saveScore(){
   localStorage.setItem("scores", JSON.stringify(scores))
 }
 
-//Display score
-
-var endScore = getElementById("saved-score");
-endScore.setAttribute("style", "font-size: 25px; color: purple;")
-endScore.appendChild("saved-score")
-
 var pool = document.getElementById("save-button")
 pool.addEventListener("click", saveScore)
 
 //Display score
-// function displayScore(){
-// var endScore = JSON.parse(localStorage.getItem(scores));
+function displayScore(){
+var endScore = JSON.parse(localStorage.getItem(scores));
 
-// endScore = document.createElement
-// document.getElementById("")
-// }
+endScore.setAttribute("style", "font-size: 25px; color: purple;")
+endScore.appendChild("end-score")
+}
 
-//High score page
 
