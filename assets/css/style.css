@@ -31,10 +31,7 @@ p {
     margin: 0 auto;
     max-width: 1000px;
     padding: 40px;
-
 }
-
-
 
 #high-scores {
     float: left;
@@ -60,15 +57,7 @@ p {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-
 }
-
-/* #quiz-content {
-    justify-content: center;
-    padding: 20px;
-    text-align: center;
-    margin-top: 30px;
-} */
 
 #start-btn {
     background-color: purple;
@@ -117,7 +106,6 @@ p {
     margin: 0 auto;
     max-width: 1000px;
     padding: 20px;
-    align-content: center;
 }
 
 #result {

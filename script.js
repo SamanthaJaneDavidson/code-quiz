@@ -26,7 +26,6 @@ var quizQuestions = [
 var quizQuestionContainer = document.querySelector("#quiz-questions");
 var quizAnswerContainer = document.querySelector("#quiz-answers");
 var currentQuestion = 0;
-var scores = [];
 var endScore = document.querySelector("#end-score");
 var result = document.querySelector("#result");
 var highScorePage = document.querySelector("#high-score-page");
@@ -85,7 +84,7 @@ function getQuestions() {
    }
   }
 
-    //Question cycle and answer scoring 
+  //Question cycle and answer scoring 
     quizAnswerContainer.addEventListener("click", function(event){
       
       currentQuestion++
@@ -135,49 +134,46 @@ function getQuestions() {
     scoreForm.classList.remove("hidden")
   }
 
-//Score calculation
-var scores = JSON.parse(localStorage.getItem("scores")) || [];
+  //Score calculation
+  var scores = JSON.parse(localStorage.getItem("scores")) || [];
 
-function saveScore(){
-  var initials = document.getElementById("initials");
-  var data = {
-    initials: initials.value,
-    score: secondsLeft,
+  function saveScore(){
+    var initials = document.getElementById("initials");
+    var data = {
+      initials: initials.value,
+      score: secondsLeft,
+    }
+    scores.push(data)
+    localStorage.setItem("scores", JSON.stringify(scores))
   }
-  scores.push(data)
-  localStorage.setItem("scores", JSON.stringify(scores))
-}
 
-var pool = document.getElementById("save-button")
-pool.addEventListener("click", saveScore)
+  var pool = document.getElementById("save-button")
+  pool.addEventListener("click", saveScore)
 
-endScore.textContent = "Congratulation! Your score is..." + scores[0] + "."; //how do I get the curernt score here?
+  endScore.textContent = "Congratulations! Your score is " + secondsLeft + "."; //how do I get the curernt score here?
 
+  //Click link to high scores page 
+  // var highScores = document.querySelector("high-scores");
+  // highScores.addEventListener("click", renderHighScores);
 
-var highScores = [];
+  //High score page
+  function renderHighScores (){
 
-//High score page
-function renderHighScores (){
+  highScoreList.innerHTML = "";
 
-highScoreList.innerHTML = "";
+  //Display appropriate section 
+  var quizSection = document.getElementById("quiz-section")
+  quizSection.classList.add("hidden")
+  var scoreForm = document.getElementById("score-form")
+  scoreForm.classList.add("hidden")
+  var highScorePage = document.getElementById("#high-score-page")
+  highScorePage.classList.remove("hidden")
 
-  // var quizSection = document.getElementById("quiz-section")
-  // quizSection.classList.add("hidden")
-  // var scoreForm = document.getElementById("score-form")
-  // scoreForm.classList.add("hidden")
-  // var highScorePage = document.getElementById("#high-score-page")
-  // highScorePage.classList.remove("hidden")
+  var highScoreList = document.createElement("ol");
+  highScoreList.setAttribute("style", "display: flex; flex-direction: column;")
+  highScorePage.appendChild(highScoreList);
+  highScoreList.setAttribute("class", "li")
 
-  document.getElementById("high-score-list").innerHTML = JSON.parse(localStorage.getItem("scores"));
+  highScoreList = JSON.parse(localStorage.getItem("scores"));
 
-  // JSON.parse(localStorage.getItem("scores"));
-
-  // for(var i = 0; i < scores.length; i++){
-  //   var scores = scores[i];
-
-  //   var li = document.createElement("li");
-  //   li.textContent = scores;
-  //   li.setAttribute("data-index", i);
-  //   highScoreList.appendChild(li);
-  // }
 }
