@@ -12,7 +12,7 @@
 <body>
     <nav>
         <section id="high-scores">
-            <a href="placeholder high score page">High Scores</a>
+            <a href="#high-score-page">High Scores</a>
         </section>
 
         <section id="timer"></section>
@@ -32,11 +32,17 @@
     </main>
 
     <section class="hidden" id="score-form">
-        <h2>Congratulations!</h2>
-        <p>Score: <span id="end-score"></span></p>
+        <p><span id="end-score"></span></p>
         <input id="initials" type="text" placeholder="Enter Initials">
         <button id="save-button">Save</button>
     </section>
+
+    <section class="hidden" id="high-score-page">
+        <h1>High Scores</h1>
+        <ul id="high-score-list">
+        </ul>
+    </section>
+
     <script src="./script.js"></script>
 </body>
 </html>

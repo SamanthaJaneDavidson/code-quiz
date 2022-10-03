@@ -26,9 +26,11 @@ var quizQuestions = [
 var quizQuestionContainer = document.querySelector("#quiz-questions");
 var quizAnswerContainer = document.querySelector("#quiz-answers");
 var currentQuestion = 0;
-var ans = 0;
+var scores = [];
 var endScore = document.querySelector("#end-score");
-var result = document.querySelector("#result")
+var result = document.querySelector("#result");
+var highScorePage = document.querySelector("#high-score-page");
+var highScoreList= document.querySelector("#high-score-list");
 
 
 //Start quiz
@@ -121,12 +123,9 @@ function getQuestions() {
             quizSection.classList.add("hidden")
             var scoreForm = document.getElementById("score-form")
             scoreForm.classList.remove("hidden")
-
           }}})
 
 
-
-   
   //Game over timer
   function gameOver() {
     timer.textContent = "Time is up!";
@@ -134,7 +133,6 @@ function getQuestions() {
     quizSection.classList.add("hidden")
     var scoreForm = document.getElementById("score-form")
     scoreForm.classList.remove("hidden")
-
   }
 
 //Score calculation
@@ -153,12 +151,33 @@ function saveScore(){
 var pool = document.getElementById("save-button")
 pool.addEventListener("click", saveScore)
 
-//Display score
-function displayScore(){
-var endScore = JSON.parse(localStorage.getItem(scores));
+endScore.textContent = "Congratulation! Your score is..." + scores[0] + "."; //how do I get the curernt score here?
 
-endScore.setAttribute("style", "font-size: 25px; color: purple;")
-endScore.appendChild("end-score")
+
+var highScores = [];
+
+//High score page
+function renderHighScores (){
+
+highScoreList.innerHTML = "";
+
+  // var quizSection = document.getElementById("quiz-section")
+  // quizSection.classList.add("hidden")
+  // var scoreForm = document.getElementById("score-form")
+  // scoreForm.classList.add("hidden")
+  // var highScorePage = document.getElementById("#high-score-page")
+  // highScorePage.classList.remove("hidden")
+
+  document.getElementById("high-score-list").innerHTML = JSON.parse(localStorage.getItem("scores"));
+
+  // JSON.parse(localStorage.getItem("scores"));
+
+  // for(var i = 0; i < scores.length; i++){
+  //   var scores = scores[i];
+
+  //   var li = document.createElement("li");
+  //   li.textContent = scores;
+  //   li.setAttribute("data-index", i);
+  //   highScoreList.appendChild(li);
+  // }
 }
-
-
