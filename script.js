@@ -29,7 +29,10 @@ var currentQuestion = 0;
 var endScore = document.querySelector("#end-score");
 var result = document.querySelector("#result");
 var highScorePage = document.querySelector("#high-score-page");
-var highScoreList= document.querySelector("#high-score-list");
+var highScoreList = document.querySelector("#high-score-list");
+//define quiz section 
+var quizSection = document.querySelector("#quiz-section");
+var scoreForm = document.querySelector("#score-form"); 
 
 
 //Start quiz
@@ -99,11 +102,13 @@ function getQuestions() {
             result.innerHTML = "Incorrect!"; //Where do I need to put this so it displays on the current question instead of the next? 
             quizQuestionContainer.innerHTML = '';
             quizAnswerContainer.innerHTML = '';
-            getQuestions();
+            setTimeout(() => {
+              getQuestions()
+            }, 500);
           }
           else{
             if(child.value === "correct"){
-              // alert("Correct!")
+              //alert("Correct!")
             }
             quizQuestionContainer.innerHTML = '';
             quizAnswerContainer.innerHTML = '';
@@ -159,21 +164,31 @@ function getQuestions() {
   //High score page
   function renderHighScores (){
 
-  highScoreList.innerHTML = "";
-
   //Display appropriate section 
-  var quizSection = document.getElementById("quiz-section")
   quizSection.classList.add("hidden")
-  var scoreForm = document.getElementById("score-form")
   scoreForm.classList.add("hidden")
-  var highScorePage = document.getElementById("#high-score-page")
   highScorePage.classList.remove("hidden")
 
-  var highScoreList = document.createElement("ol");
-  highScoreList.setAttribute("style", "display: flex; flex-direction: column;")
-  highScorePage.appendChild(highScoreList);
-  highScoreList.setAttribute("class", "li")
 
-  highScoreList = JSON.parse(localStorage.getItem("scores"));
+  var storedHighScore = JSON.parse(localStorage.getItem("scores"));
+    console.log(storedHighScore)
+
+    highScoreList.innerHTML = '';
+
+    for(var i = 0; i < storedHighScore.length; i++){
+      console.log(storedHighScore[i])
+      var item = document.createElement("li");
+      var initials = (storedHighScore[i].initials);
+      var score = (storedHighScore[i].score);
+      item.textContent = initials + score; 
+      highScoreList.appendChild(item);
+    }
 
 }
+
+
+  document.querySelector("#high-scores a").addEventListener("click", function(event){
+  console.log("work")
+    renderHighScores()
+}
+);
