@@ -180,7 +180,7 @@ function getQuestions() {
       var item = document.createElement("li");
       var initials = (storedHighScore[i].initials);
       var score = (storedHighScore[i].score);
-      item.textContent = initials + score; 
+      item.textContent = initials + ":" + "  " + score; 
       highScoreList.appendChild(item);
     }
 
