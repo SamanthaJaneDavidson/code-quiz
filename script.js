@@ -30,7 +30,6 @@ var endScore = document.querySelector("#end-score");
 var result = document.querySelector("#result");
 var highScorePage = document.querySelector("#high-score-page");
 var highScoreList = document.querySelector("#high-score-list");
-//define quiz section 
 var quizSection = document.querySelector("#quiz-section");
 var scoreForm = document.querySelector("#score-form"); 
 
@@ -50,9 +49,10 @@ function startQuiz(){
 var timer = document.getElementById("timer");
 
 var secondsLeft = 60;
+var timerInterval;
 
 function setTime() {
-  var timerInterval = setInterval(function() {
+  timerInterval = setInterval(function() {
     secondsLeft--;
     timer.textContent = secondsLeft;
 
@@ -99,7 +99,7 @@ function getQuestions() {
         if(currentQuestion < quizQuestions.length){
           if(child.value == "incorrect"){
             secondsLeft-=10;
-            result.innerHTML = "Incorrect!"; //Where do I need to put this so it displays on the current question instead of the next? 
+            result.innerHTML = "Incorrect!"; 
             quizQuestionContainer.innerHTML = '';
             quizAnswerContainer.innerHTML = '';
             setTimeout(() => {
@@ -108,25 +108,35 @@ function getQuestions() {
           }
           else{
             if(child.value === "correct"){
-              //alert("Correct!")
+              result.innerHTML = "Correct!";
             }
             quizQuestionContainer.innerHTML = '';
             quizAnswerContainer.innerHTML = '';
+            setTimeout(() => {
             getQuestions()
+            }, 500);
           }
         }
         else{
           if(child.value == "incorrect"){
-            // alert("Incorrect!");
             secondsLeft-=10;
+            result.innerHTML = "Incorrect!"
+            setTimeout(() => {
+            }, 500);
           }
             if(child.value === "correct"){
-              // alert("Correct!")
+              result.innerHTML = "Correct!"
+              setTimeout(() => {
+              }, 500);
             }
             var quizSection = document.getElementById("quiz-section")
             quizSection.classList.add("hidden")
             var scoreForm = document.getElementById("score-form")
             scoreForm.classList.remove("hidden")
+    
+            endScore.textContent = "Congratulations! Your score is " + secondsLeft + "."; //how do I get the curernt score here?
+            clearInterval(timerInterval);
+
           }}})
 
 
@@ -155,13 +165,7 @@ function getQuestions() {
   var pool = document.getElementById("save-button")
   pool.addEventListener("click", saveScore)
 
-  endScore.textContent = "Congratulations! Your score is " + secondsLeft + "."; //how do I get the curernt score here?
-
-  //Click link to high scores page 
-  // var highScores = document.querySelector("high-scores");
-  // highScores.addEventListener("click", renderHighScores);
-
-  //High score page
+  // High score page 
   function renderHighScores (){
 
   //Display appropriate section 
@@ -185,10 +189,7 @@ function getQuestions() {
     }
 
 }
-
-
   document.querySelector("#high-scores a").addEventListener("click", function(event){
-  console.log("work")
     renderHighScores()
 }
 );

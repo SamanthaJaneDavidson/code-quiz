@@ -118,11 +118,18 @@ p {
 
 #high-score-list{
     display: flex;
-    align-items: center;
     justify-content: space-evenly;
-    font-size: 20px;
+    font-size: 30px;
     flex-direction: column;
-    align-self: flex-start;
+    margin: 0;
+    border: 5px;
+    text-align: left;
+}
+
+#list-div {
+    text-align: left;
+    margin: auto;
+    width: 10%;
 }
 
 @media screen and (max-width: 767px) {
