@@ -5,21 +5,21 @@ var quizQuestions = [
       answer: ["Strings", "Booleans", "Alerts", "Numbers"],
       correct: "Alerts"
   }, {
-      question: "Blah blah blah blah blah blah? ",
-      answer: ["stuff", "different stuff", "more stuff", "this sucks"],
-      correct: "this sucks"
+      question: "String Values must be enclosed within ______ when being assigned to variables? ",
+      answer: ["Commas", "Curly brackets", "Quotes", "Parenthesis"],
+      correct: "Quotes"
   }, {
-      question: "How well does Sam know JavaScript?",
-      answer: ["not at all", "maybe a little", "getting there", "totally got this"],
-      correct: "maybe a little"
+      question: "The condition in an if/else statement is enclosed with _____.",
+      answer: ["Quotes", "Curly brackets", "Parenthesis", "Square brackets"],
+      correct: "Curly brackets"
   }, {
-      question: "How much more time should I spend on this before I see my tutor?",
-      answer: ["give up", "2 more hours", "4 more hours", "the rest of your life"],
-      correct: "4 more hours"
+      question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+      answer: ["JavaScript", "Terminal/bash", "For loops", "Console.log"],
+      correct: "Console.log"
   }, {
-      question: "Is 1 week enough to actually be able to do this assignment?",
-      answer: ["definitely not", "with some help maybe", "if there were more hours in the day", "definitely"],
-      correct: "with some help maybe"
+      question: "Arrays in JavaScript can be used to store _____.",
+      answer: ["Numbers and strings", "Other arrays", "Booleans", "All of the above"],
+      correct: "All of the above"
   }]
 
 //Access HTML elements
